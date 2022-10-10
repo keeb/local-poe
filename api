@@ -1,0 +1,51 @@
+path of exile api info
+
+
+some api info
+https://www.reddit.com/r/pathofexiledev/comments/7aiil7/how_to_make_your_own_queries_against_the_official/
+
+get leagues
+
+https://www.pathofexile.com/api/trade/data/leagues
+
+
+To search send a POST request to https://www.pathofexile.com/api/trade/search/YOUR_LEAGUE with a json object containing your query. A super simple one searching for The Pariah on Standard would look like this.
+
+ 
+POST: https://www.pathofexile.com/api/trade/search/Standard
+	{
+	    "query": {
+	        "status": {
+	            "option": "online"
+	        },
+	        "name": "The Pariah",
+	        "type": "Unset Ring",
+	        "stats": [{
+	            "type": "and",
+	            "filters": []
+	        }]
+	    },
+	    "sort": {
+	        "price": "asc"
+	    }
+	}
+
+
+
+all items: https://www.pathofexile.com/api/trade/data/items
+all stats: https://www.pathofexile.com/api/trade/data/stats
+
+
+https://jsoncompare.com/#!/simple/id=70dfadce047d9ea0c9e509dd6e85e84e&fullscreen/
+
+https://www.reddit.com/r/pathofexiledev/comments/m9hp8d/poe_api_beginner_questions/
+
+
+https://www.pathofexile.com/api/public-stash-tabs?id=1684865466-1687559653-1630811171-1808687621-1753290550
+
+
+https://www.pathofexile.com/api/public-stash-tabs
+
+
+https://poe.ninja/stats
+
