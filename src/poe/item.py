@@ -11,6 +11,8 @@ def from_description(desc):
 
     if item_class == "Maps":
         return createMap(desc)
+    elif item_class == "Incubators":
+        return createIncubator(desc)
 
     else:
         return None
@@ -58,6 +60,17 @@ def createMap(data):
 
     return m
 
+def createIncubator(data):
+    i = Incubator()
+    item_metadata, stack_size, ilvl, x, y = data.split("--------")
+    i.item_class, i.rarity, i.name = parse_metadata(item_metadata)
+    i.stack_size = get_property(stack_size)
+    i.item_level = get_property(ilvl)
+    return i
+
+
+
+
 class Item:
     """
     can consider adding things like icon and the rest if needed as part of a 
@@ -73,19 +86,23 @@ class Item:
 
     def to_json(self):
         pass
+    
+    def __repr__(self):
+        return self.name
 
+class Incubator(Item):
+    """
+        make stackable class?
+    """
+    def __init__(self):
+        self.stack_size = None
+        super().__init__()
 
 
 class Map(Item):
     def __init__(self):
         super().__init__()
         self.tier = None
-    
-    def load(self, raw):
-        self.raw = raw
-        item_metadata, tier, ilvl, descr = raw.split("--------")
-        self.tier = get_property(tier)
-        return self
     
     def __repr__(self):
         return "%s\n%s" % (self.name, self.tier)
